@@ -50,6 +50,27 @@ public class BabyNameMain {
                 displayMenu();
                 break;
             }
+            case "3": {
+                babyName=new LinkedList<BabyName>();
+                dataRead("data/Baby_Names.csv");
+                new EditOneBabyName(babyName).editName();
+                displayMenu();
+                break;
+            }
+            case "4": {
+                babyName=new LinkedList<BabyName>();
+                dataRead("data/Baby_Names.csv");
+                new DeleteByOneBabyName(babyName).deleteName();
+                displayMenu();
+                break;
+            }
+            case "5": {
+                babyName=new LinkedList<BabyName>();
+                dataRead("data/Baby_Names.csv");
+                new DeleteBabyNameByYear(babyName).deleteYear();
+                displayMenu();
+                break;
+            }
         }
     }
     public void dataRead(String fname){
