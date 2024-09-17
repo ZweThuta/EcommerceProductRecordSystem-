@@ -20,7 +20,7 @@ public class BabyNameMain {
         System.out.println("3. Edit One Baby Name Data.");
         System.out.println("4. Delete One Baby Name Data.");
         System.out.println("5. Delete Baby Names by Year.");
-        System.out.println("6. Display Male Female Baby Names by Year.");
+        System.out.println("6. Display Male and Female Baby Names by Year.");
         System.out.println("7. Display Top Ten Male Female Baby Names in Each Year.");
         System.out.println("8. Exit");
         System.out.print("Choose Option: ");
@@ -68,6 +68,20 @@ public class BabyNameMain {
                 babyName=new LinkedList<BabyName>();
                 dataRead("data/Baby_Names.csv");
                 new DeleteBabyNameByYear(babyName).deleteYear();
+                displayMenu();
+                break;
+            }
+            case "6": {
+                babyName=new LinkedList<BabyName>();
+                dataRead("data/Baby_Names.csv");
+                new ReportBabyNameByYear(babyName).displayNamesByYear();
+                displayMenu();
+                break;
+            }
+            case "7": {
+                babyName=new LinkedList<BabyName>();
+                dataRead("data/Baby_Names.csv");
+                new ReportBabyNameByEachYear(babyName).displayTopTen();
                 displayMenu();
                 break;
             }
