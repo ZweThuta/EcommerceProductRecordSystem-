@@ -65,7 +65,7 @@ public class InsertNewTransaction {
                 purchaseMethod,
                 location
         ));
-        search.csvWriter("data/project1_df.csv", transactions, false);
+        CSVWriteSingleton.getInstance().csvWriter("data/project1_df.csv", transactions, false);
         System.out.println("New record is added Successfully!");
     }
 }

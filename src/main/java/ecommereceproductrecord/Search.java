@@ -41,51 +41,12 @@ public class Search {
     }
 
 
-    public boolean searchProductCategory(LinkedList<Transaction> productsList, String productCategory) {
+    public boolean searchProductCategory(String productCategory, LinkedList<Transaction> productsList) {
         for (Transaction transaction : productsList) {
             if (transaction.getProductCategory().equals(productCategory)) {
                 return true;
             }
         }
         return false;
-    }
-
-    public void csvWriter(String fileName, LinkedList<Transaction> productList, boolean append) {
-        FileWriter fileWriter = null;
-        try {
-            fileWriter = new FileWriter(fileName, append);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        CSVWriter csvWriter = new CSVWriter(fileWriter);
-
-        for (Transaction product : productList) {
-            String[] data = {
-                    product.getCustomerId(),
-                    product.getTransactionId(),
-                    product.getGender(),
-                    product.getAge(),
-                    product.getPurchaseDate(),
-                    product.getProductCategory(),
-                    product.getDiscountAvailed(),
-                    product.getDiscountName(),
-                    Double.toString(product.getDiscountAmount()),
-                    Double.toString(product.getGrossAmount()),
-                    Double.toString(product.getNetAmount()),
-                    product.getPurchaseMethod(),
-                    product.getLocation()
-            };
-            csvWriter.writeNext(data);
-        }
-        try {
-            csvWriter.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            fileWriter.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

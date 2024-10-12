@@ -24,7 +24,7 @@ public class UpdateRecords {
             transactionIndex = (search.searchTransIdAndCusId(customerId, transactionId, transactions));
         }
         transactions.remove(transactionIndex);
-        System.out.println("You can now Edit the data.");
+        System.out.println("Please edit the records!");
         new InsertNewTransaction(transactions).insertTransaction();
     }
 }

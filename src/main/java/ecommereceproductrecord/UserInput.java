@@ -45,13 +45,13 @@ public class UserInput {
     public String getAgeGroup() {
         System.out.println("Enter Your age: ");
         String input = sc.nextLine();
-        if (input.matches("([1-9]|1[0-8])")) {
+        if (input.matches("([1-9]|1[0-7])")) {
             return "under 18";
-        } else if (input.matches("(1[8-9]|2[1-5])")) {
+        } else if (input.matches("(1[8-9]|2[0-4])")) {
             return "18-25";
-        } else if (input.matches("(2[5-9]|[3-4][0-5])")) {
+        } else if (input.matches("(2[5-9]|[3-4][0-4])")) {
             return "25-45";
-        } else if (input.matches("(4[5-9]|[5-6][0-5])")) {
+        } else if (input.matches("(4[5-9]|[5-6][0-4])")) {
             return "45-65";
         } else if (input.matches("(6[5-9]|[7-9][0-9]|100)")) {
             return "over 65";
@@ -76,7 +76,7 @@ public class UserInput {
         System.out.println("Beauty and Health" +
                 "\n" + "Electronics" +
                 "\n" + "Pet Care" +
-                "\n" + "Home and Kitchen" +
+                "\n" + "Home & Kitchen" +
                 "\n" + "Clothing" +
                 "\n" + "Books" +
                 "\n" + "Toys & Games" +
@@ -86,7 +86,7 @@ public class UserInput {
         System.out.println();
         System.out.print("Enter Product Category: ");
         String input = sc.nextLine();
-        if (!input.matches("(Beauty and Health|Books|Clothing|Electronics|Home and Kitchen|Other|Pet Care|Sports & Fitness|Toys & Games)")) {
+        if (!input.matches("(Beauty and Health|Books|Clothing|Electronics|Home & Kitchen|Other|Pet Care|Sports & Fitness|Toys & Games)")) {
             System.out.println("Please choice only form the product category!");
             input = getProductCategory();
         }
@@ -174,12 +174,24 @@ public class UserInput {
     }
 
     //Input Location
-    public String getLocation(){
+    public String getLocation() {
         System.out.print("Enter Location: ");
         String input = sc.nextLine();
-        if (!input.matches("[A-Z][a-z]+")){
+        if (!input.matches("[A-Z][a-z]+")) {
             System.out.println("Location must start with capital letter and follows by small letters.");
             input = getLocation();
+        }
+        return input;
+    }
+
+    //Search Record by CID and Product Category
+    public String getSearchType() {
+        System.out.println("Please choice the type of searching!");
+        System.out.println("Search by Customer ID" + "\n" + "Search by Product Category");
+        String input = sc.nextLine();
+        if (!input.matches("(Customer ID|Product Category)")){
+            System.out.println("Please choice Customer ID or Product Category!");
+            input = getSearchType();
         }
         return input;
     }

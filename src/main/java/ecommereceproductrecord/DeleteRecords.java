@@ -24,7 +24,7 @@ public class DeleteRecords {
         }
         transactions.remove(transactionIndex);
 
-        search.csvWriter("data/project1_df.csv", transactions, false);
+        CSVWriteSingleton.getInstance().csvWriter("data/project1_df.csv", transactions, false);
         System.out.println("Record is deleted Successfully!");
     }
 }
