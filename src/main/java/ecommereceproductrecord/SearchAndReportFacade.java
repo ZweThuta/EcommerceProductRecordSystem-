@@ -4,38 +4,50 @@ import java.util.LinkedList;
 
 public class SearchAndReportFacade {
     private LinkedList<Transaction> transactions;
+    private SearchAndReport searchCID;
+    private SearchAndReport searchCategory;
+    private SearchAndReport sortByNetAmount;
+    private SearchAndReport sortByCategoryList;
+    private SearchAndReport countByLocation;
+    private SearchAndReport countByUser;
+    private SearchAndReport sortByDiscount;
 
     public SearchAndReportFacade(LinkedList<Transaction> transactions) {
-        this.transactions = transactions;
+        searchCID = new SearchRecordByCustomerId(transactions);
+        searchCategory = new SearchRecordByProductCategory(transactions);
+        sortByNetAmount = new SortProductCategoryByNetAmount(transactions);
+        sortByCategoryList = new ListProductByCategory(transactions);
+        countByLocation = new ProductByEachLocation(transactions);
+        countByUser = new TotalProductCountByEachUser(transactions);
+        sortByDiscount = new ProductWithDiscount(transactions);
     }
 
     public void searchByCustomerId() {
-        new SearchRecordByCustomerId(transactions).search();
+        searchCID.searchAndReport();
     }
 
     public void searchByProductCategory() {
-        new SearchRecordByProductCategory(transactions).search();
+        searchCategory.searchAndReport();
     }
 
     public void reportSortedByNetAmount() {
-        new SortProductCategoryByNetAmount(transactions).report();
+        sortByNetAmount.searchAndReport();
     }
 
     public void listProductsByCategory() {
-        new ListProductByCategory(transactions).report();
+        sortByCategoryList.searchAndReport();
     }
 
     public void countProductsByLocation() {
-        new ProductByEachLocation(transactions).report();
+        countByLocation.searchAndReport();
     }
 
     public void productCountByEachUser() {
-        new TotalProductCountByEachUser(transactions).report();
+        countByUser.searchAndReport();
     }
 
     public void productWithDiscountAvailable() {
-        new ProductWithDiscount(transactions).report();
+        sortByDiscount.searchAndReport();
     }
-
 
 }

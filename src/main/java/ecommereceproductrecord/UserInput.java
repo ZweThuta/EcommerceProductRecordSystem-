@@ -145,11 +145,6 @@ public class UserInput {
         return input;
     }
 
-    //net amount
-    public String getNetAmount() {
-        return null;
-    }
-
     //Input Purchase Method
     public String getPurchaseMethod() {
         System.out.println("Please choice the following purchase method.");

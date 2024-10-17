@@ -43,6 +43,7 @@ public class CSVReadSingleton {
                         data[12]
                 ));
             }
+
             csvReader.close();
         } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);

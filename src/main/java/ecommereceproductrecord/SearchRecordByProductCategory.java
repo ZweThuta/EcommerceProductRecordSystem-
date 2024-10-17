@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SearchRecordByProductCategory {
-    LinkedList<Transaction> transactions = new LinkedList<>();
+public class SearchRecordByProductCategory implements SearchAndReport {
+    LinkedList<Transaction> transactions;
     UserInput userInput = new UserInput();
     Search search = new Search();
 
@@ -16,7 +16,8 @@ public class SearchRecordByProductCategory {
         this.transactions = transactions;
     }
 
-    public void search() {
+    @Override
+    public void searchAndReport() {
         String productCategory = userInput.getProductCategory();
         if (!search.searchProductCategory(productCategory, transactions)) {
             System.out.println("This product category is not available!");

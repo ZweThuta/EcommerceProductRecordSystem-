@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SearchRecordByCustomerId {
-    LinkedList<Transaction> transactions = new LinkedList<>();
+public class SearchRecordByCustomerId implements SearchAndReport {
+    LinkedList<Transaction> transactions;
     UserInput userInput = new UserInput();
     Search search = new Search();
 
@@ -16,12 +16,14 @@ public class SearchRecordByCustomerId {
         this.transactions = transactions;
     }
 
-    public void search() {
+    @Override
+    public void searchAndReport() {
         String customerId = userInput.getCustomerId();
         if (!search.searchCusId(customerId, transactions)) {
             System.out.println("This customer is not available!");
             customerId = userInput.getCustomerId();
         }
+
         LinkedList<Transaction> searchCustomer = new LinkedList<>();
         int found = 0;
         for (Transaction transaction : transactions) {
@@ -30,6 +32,7 @@ public class SearchRecordByCustomerId {
                 found++;
             }
         }
+
         if (found != 0) {
             System.out.println("Product Records of " + customerId);
             AsciiTable table = new AsciiTable();
@@ -54,8 +57,6 @@ public class SearchRecordByCustomerId {
             table.setTextAlignment(TextAlignment.CENTER);
             System.out.println(table.render());
             CSVWriteSingleton.getInstance().csvWriter("data/searchedByCustomer.csv", searchCustomer, false);
-        } else {
-            System.out.println("This customer is not available!");
         }
     }
 }

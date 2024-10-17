@@ -8,18 +8,19 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ProductWithDiscount {
+public class ProductWithDiscount implements SearchAndReport {
     LinkedList<Transaction> transactions = new LinkedList<>();
 
     public ProductWithDiscount(LinkedList<Transaction> transactions) {
         this.transactions = transactions;
     }
 
-    public void report(){
+    @Override
+    public void searchAndReport() {
         LinkedList<Transaction> discountProduct = new LinkedList<>();
 
-        for (Transaction transaction: transactions){
-            if(transaction.getDiscountAvailed().equals("Yes")){
+        for (Transaction transaction : transactions) {
+            if (transaction.getDiscountAvailed().equals("Yes")) {
                 discountProduct.add(transaction);
             }
         }

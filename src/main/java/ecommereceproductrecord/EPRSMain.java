@@ -1,12 +1,5 @@
 package ecommereceproductrecord;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvValidationException;
-
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -98,6 +91,7 @@ public class EPRSMain extends MenuMethodsTemplate {
             }
             case "11": {
                 System.out.println("Exiting the program.");
+                System.out.println("Thank You For Using Ecommerce Product Record System!");
                 return;
             }
             default: {
@@ -137,10 +131,9 @@ public class EPRSMain extends MenuMethodsTemplate {
         dataRead("data/project1_df.csv");
         UserInput userInput = new UserInput();
         searchAndReportFacade = new SearchAndReportFacade(productsList);
-        if (userInput.getSearchType().equals("Customer ID")){
+        if (userInput.getSearchType().equals("Customer ID")) {
             searchAndReportFacade.searchByCustomerId();
-        }
-        else {
+        } else {
             searchAndReportFacade.searchByProductCategory();
         }
         displayMenu();

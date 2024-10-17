@@ -3,7 +3,7 @@ package ecommereceproductrecord;
 import java.util.LinkedList;
 
 public class UpdateRecords {
-    LinkedList<Transaction> transactions = new LinkedList<>();
+    LinkedList<Transaction> transactions;
     UserInput userInput = new UserInput();
     Search search = new Search();
 

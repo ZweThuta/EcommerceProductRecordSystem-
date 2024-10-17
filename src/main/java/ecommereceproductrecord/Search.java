@@ -1,9 +1,5 @@
 package ecommereceproductrecord;
 
-import com.opencsv.CSVWriter;
-
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.LinkedList;
 
 public class Search {

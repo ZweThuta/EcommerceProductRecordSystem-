@@ -6,7 +6,7 @@ public class InsertNewTransaction {
     UserInput userInput = new UserInput();
     Search search = new Search();
 
-    LinkedList<Transaction> transactions = new LinkedList<>();
+    LinkedList<Transaction> transactions;
 
     public InsertNewTransaction(LinkedList<Transaction> transactions) {
         this.transactions = transactions;
@@ -14,13 +14,11 @@ public class InsertNewTransaction {
 
     public void insertTransaction() {
         String customerId = userInput.getCustomerId();
-
         String transactionId = userInput.getTransactionId();
         while ((search.searchTransId(transactionId, transactions)) >= 0) {
             System.out.println("Transaction ID is already existed! Please enter again!");
             transactionId = userInput.getTransactionId();
         }
-
         String gender = userInput.getGender();
         String age = userInput.getAgeGroup();
         String purchaseDate = userInput.getPurchaseDate();
@@ -29,11 +27,9 @@ public class InsertNewTransaction {
 
         String discountName = null;
         String discountAmount = "0";
-
         String grossAmount = "0";
         if (discountAvailable.equals("Yes")) {
             discountName = userInput.getDiscountName();
-
             do {
                 discountAmount = userInput.getDiscountAmount();
                 grossAmount = userInput.getGrossAmount();
@@ -44,7 +40,6 @@ public class InsertNewTransaction {
         } else {
             grossAmount = userInput.getGrossAmount();
         }
-
         Double calculateNetAmount = (Double.parseDouble(grossAmount) - Double.parseDouble(discountAmount));
         String netAmount = String.valueOf(calculateNetAmount);
         String purchaseMethod = userInput.getPurchaseMethod();
@@ -67,5 +62,7 @@ public class InsertNewTransaction {
         ));
         CSVWriteSingleton.getInstance().csvWriter("data/project1_df.csv", transactions, false);
         System.out.println("New record is added Successfully!");
+        System.out.println();
     }
 }
+

@@ -8,15 +8,16 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SortProductCategoryByNetAmount {
-    LinkedList<Transaction> transactions = new LinkedList<>();
+public class SortProductCategoryByNetAmount implements SearchAndReport {
+    LinkedList<Transaction> transactions;
     UserInput userInput = new UserInput();
 
     public SortProductCategoryByNetAmount(LinkedList<Transaction> transactions) {
         this.transactions = transactions;
     }
 
-    public void report() {
+    @Override
+    public void searchAndReport() {
         String productCategory = userInput.getProductCategory();
         LinkedList<Transaction> foundProductCategory = new LinkedList<>();
 

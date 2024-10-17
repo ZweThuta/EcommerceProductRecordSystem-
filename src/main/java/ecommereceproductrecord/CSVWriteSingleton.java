@@ -5,6 +5,8 @@ import com.opencsv.CSVWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class CSVWriteSingleton {
 
@@ -45,6 +47,34 @@ public class CSVWriteSingleton {
                     Double.toString(product.getNetAmount()),
                     product.getPurchaseMethod(),
                     product.getLocation()
+            };
+            csvWriter.writeNext(data);
+        }
+        try {
+            csvWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void csvWriter(String fileName, List<Map.Entry<String, Integer>> productList) {
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(fileName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        CSVWriter csvWriter = new CSVWriter(fileWriter);
+
+        for (Map.Entry<String, Integer> entry : productList) {
+            String[] data = {
+                    entry.getKey(),
+                    Integer.toString(entry.getValue())
             };
             csvWriter.writeNext(data);
         }
